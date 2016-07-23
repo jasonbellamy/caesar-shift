@@ -8,7 +8,13 @@
  * @returns {String} the encrypted message
  */
 export function encrypt(key, message) {
-
+  // 1. Identify each character.
+  // 2. convert each char to ascii number code
+  // 3. check if each char code is alpha
+  // 4. if char code is not alpha then do nothing do it
+  // 5. if char code is alpha then increment char code by key 'x = c + k'
+  // 6. convert each char code in to string char
+  // 7. concat all chars into a string.
 }
 
 /**
