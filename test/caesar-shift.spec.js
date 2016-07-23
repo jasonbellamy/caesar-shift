@@ -40,3 +40,26 @@ test('encrypt maintains the current case of each character', (t) => {
   );
   t.end();
 });
+
+test('decrypt only accepts a non-negative integer as a key', (t) => {
+  t.throws(
+    decrypt(-1, 'opqrstuvwxxyzabcdefghijklm')
+  );
+  t.end();
+});
+
+test('decrypts an encrypted message if the correct key is provided', (t) => {
+  t.equal(
+    decrypt(1, 'bcdefghijkklmnopqrstuvwxyz'),
+    'abcdefghijjklmnopqrstuvwxy'
+  );
+  t.equal(
+    decrypt(14, 'opqrstuvwxxyzabcdefghijklm'),
+    'abcdefghijjklmnopqrstuvwxy'
+  );
+  t.equal(
+    decrypt(26, 'abcdefghijjklmnopqrstuvwxy'),
+    'abcdefghijjklmnopqrstuvwxy'
+  );
+  t.end();
+});
