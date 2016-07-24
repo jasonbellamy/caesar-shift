@@ -11,8 +11,8 @@ test('encrypt only accepts a non-negative integer as a key', (t) => {
 
 test('encrypt shifts each alphabetical character by the specified key', (t) => {
   t.equal(
-    encrypt(1, 'abcdefghijjklmnopqrstuvwxy'),
-    'bcdefghijkklmnopqrstuvwxyz'
+    encrypt(1, 'abcdefghijjklmnopqrstuvwxyz'),
+    'bcdefghijkklmnopqrstuvwxyza'
   );
   t.equal(
     encrypt(14, 'abcdefghijjklmnopqrstuvwxy'),
@@ -50,16 +50,16 @@ test('decrypt only accepts a non-negative integer as a key', (t) => {
 
 test('decrypts an encrypted message if the correct key is provided', (t) => {
   t.equal(
-    decrypt(1, 'bcdefghijkklmnopqrstuvwxyz'),
-    'abcdefghijjklmnopqrstuvwxy'
+    decrypt(1, 'bcdefghijkklmnopqrstuvwxyza'),
+    'abcdefghijjklmnopqrstuvwxyz'
   );
   t.equal(
     decrypt(14, 'opqrstuvwxxyzabcdefghijklm'),
     'abcdefghijjklmnopqrstuvwxy'
   );
   t.equal(
-    decrypt(26, 'abcdefghijjklmnopqrstuvwxy'),
-    'abcdefghijjklmnopqrstuvwxy'
+    decrypt(26, 'abcdefghijjklmnopqrstuvwxyz'),
+    'abcdefghijjklmnopqrstuvwxyz'
   );
   t.end();
 });
