@@ -18,7 +18,7 @@
   "license": "MIT",
   "main": "src/caesar-shift.js",
   "scripts": {
-    "test": "./node_modules/.bin/babel-tape-runner ./test/**/*.spec.js | tap-spec"
+    "test": "./node_modules/.bin/babel-tape-runner ./test/**/**/*.spec.js | tap-spec"
   },
   "devDependencies": {
     "babel-cli": "^6.11.4",
