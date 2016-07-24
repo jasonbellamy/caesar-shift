@@ -1,3 +1,7 @@
+import { isLowerCase } from './is-lower-case.js';
+import { isUpperCase } from './is-upper-case.js';
+
+
 /**
  * Check if the the provided unicode value is alphabetical
  *
@@ -7,5 +11,5 @@
  * @returns {Boolean} is the provided value alphabetical?
  */
 export function isAlpha(x) {
-  return (x >= 64 && x <= 90) || (x >= 97 && x <= 123);
+  return isLowerCase(x) || isUpperCase(x);
 }
