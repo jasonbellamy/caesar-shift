@@ -4,7 +4,7 @@ import { encrypt, decrypt } from '../src/caesar-shift.js';
 
 test('encrypt only accepts a non-negative integer as a key', (t) => {
   t.throws(
-    encrypt(-1, 'abcdefghijjklmnopqrstuvwxy')
+    encrypt.bind(encrypt, -1, 'abcdefghijjklmnopqrstuvwxy')
   );
   t.end();
 });
@@ -43,7 +43,7 @@ test('encrypt maintains the current case of each character', (t) => {
 
 test('decrypt only accepts a non-negative integer as a key', (t) => {
   t.throws(
-    decrypt(-1, 'opqrstuvwxxyzabcdefghijklm')
+    decrypt.bind(decrypt, -1, 'opqrstuvwxxyzabcdefghijklm')
   );
   t.end();
 });
