@@ -1,3 +1,11 @@
+import { charToCode } from './util/char-to-code.js'
+import { guard } from './util/guard.js';
+import { isAlpha } from './util/is-alpha.js';
+import { identity } from './util/identity.js';
+import { shiftCode } from './util/shift-code.js';
+import { codeToChar } from './util/code-to-char.js'
+
+
 /**
  * Encrypt a message using the Caesar cipher
  *
@@ -8,13 +16,18 @@
  * @returns {String} the encrypted message
  */
 export function encrypt(key, message) {
-  // 1. Identify each character.
-  // 2. convert each char to ascii number code
-  // 3. check if each char code is alpha
-  // 4. if char code is not alpha then do nothing do it
-  // 5. if char code is alpha then increment char code by key 'x = c + k'
-  // 6. convert each char code in to string char
-  // 7. concat all chars into a string.
+  if (key < 0) {
+    throw new TypeError('Expected key to be a non-negative number');
+  }
+
+  const processCode = guard(identity, shiftCode.bind(shiftCode, key), isAlpha);
+
+  return message
+    .split('')
+    .map(charToCode)
+    .map(processCode)
+    .map(codeToChar)
+    .join('');
 }
 
 /**
