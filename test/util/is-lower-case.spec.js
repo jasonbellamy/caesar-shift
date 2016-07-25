@@ -5,7 +5,7 @@ import { isLowerCase } from '../../src/util/is-lower-case.js';
 
 test('checks if the provided ascii value is lower case', (t) => {
   t.equals(
-    range(97, 123).every(isLowerCase),
+    range(97, 122).every(isLowerCase),
     true
   );
 

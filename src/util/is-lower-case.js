@@ -7,5 +7,5 @@
  * @returns {Boolean} is the provided value lower case
  */
 export function isLowerCase(x) {
-  return (x >= 97 && x <= 123);
+  return (x >= 97 && x <= 122);
 }
