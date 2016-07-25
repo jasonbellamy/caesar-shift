@@ -1,6 +1,6 @@
 {
   "name": "caesar-shift",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A functional JavaScript implementation of the Caesar cipher",
   "homepage": "https://github.com/jasonbellamy/caesar-shift#readme",
   "author": {
