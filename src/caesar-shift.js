@@ -4,6 +4,10 @@ import { isAlpha } from './util/is-alpha.js';
 import { identity } from './util/identity.js';
 import { shiftCode } from './util/shift-code.js';
 import { codeToChar } from './util/code-to-char.js'
+import { compose } from './util/compose.js';
+import { map } from './util/map.js';
+import { split } from './util/split.js';
+import { join } from './util/join.js';
 
 
 /**
@@ -19,15 +23,9 @@ export function encrypt(key, message) {
   if (key < 0) {
     throw new TypeError('Expected key to be a non-negative number');
   }
-
-  const processCode = guard(identity, shiftCode.bind(shiftCode, key), isAlpha);
-
-  return message
-    .split('')
-    .map(charToCode)
-    .map(processCode)
-    .map(codeToChar)
-    .join('');
+  const shift = guard(identity, shiftCode.bind(shiftCode, key), isAlpha);
+  const encode = compose(codeToChar, shift, charToCode)
+  return join('', map(encode, split('', message)));
 }
 
 /**
