@@ -40,5 +40,9 @@ export function encrypt(key, message) {
  * @returns {String} the decrypted message
  */
 export function decrypt(key, message) {
+  if (key < 0) {
+    throw new TypeError('Expected key to be a non-negative number');
+  }
 
+  return encrypt(26 - key, message);
 }
